@@ -553,7 +553,7 @@ fn void status_bar() @private
  The status line's text.
 
  @param [&in] elem : "Any element of the interface"
- @return "Allocated with mem; the LiveLabel takes it"
+ @return "Allocated with mem, which the LiveLabel takes; an empty line is the literal \"\", which it never frees"
 *>
 fn String status_text(Element* elem)
 {
@@ -567,6 +567,7 @@ fn String status_text(Element* elem)
 		if (a.has_doc) line.appendf("%szoom %d%%", line.len() ? "    " : "", (int)math::round(shell.view.scale() * 100));
 		if (a.mode == DIFF && a.compare.measured) psnr_text(&line, &a.compare.psnr);
 		if (a.message.len) line.appendf("%s%s", line.len() ? "    " : "", a.message);
+		if (!line.len()) return "";
 		return line.str_view().copy(mem);
 	};
 }
