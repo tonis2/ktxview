@@ -13,13 +13,10 @@ show their raw values.
 ## Build
 
 ```sh
-git submodule update --init --recursive   # three.c3 at libs/three, with its libraries
-c3c build                                 # build/ktxview
+git submodule update --init   # cui, vulkan, window, image, font and ktx in libs/
+c3c build                     # build/ktxview
 c3c test --test-noleak
 ```
-
-`libs-dev/` takes precedence over `libs/three/lib`: symlink a working copy of a
-library there to build against it (see `libs-dev/.gitignore`).
 
 ## Run
 

@@ -27,11 +27,11 @@ saves and quits. Don't leave windows open.
 
 # Widgets
 
-Reusable widgets belong in cui (`libs/three/lib/cui.c3l`), not here. When the viewer
+Reusable widgets belong in cui (`libs/cui.c3l`), not here. When the viewer
 needs something cui lacks, write the smallest local version and note it under
 "cui gaps" in plan.md.
 
 # Libraries
 
-cui, vk, c3w, image, font and ktx come from the three.c3 submodule at `libs/three`.
-`libs-dev/` shadows them with local working copies; it is never committed.
+cui, vk, c3w, image, font and ktx are each a submodule in `libs/` (`cui.c3l`,
+`vulkan.c3l`, `window.c3l`, `image.c3l`, `font.c3l`, `ktx.c3l`).

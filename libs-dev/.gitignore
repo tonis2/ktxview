@@ -1,6 +1,0 @@
-# Local checkouts of the libraries, to build against while working on them:
-#   ln -s ~/Documents/c3/three.c3/lib/ktx.c3l libs-dev/ktx.c3l
-# They shadow libs/three/lib because project.json searches here first.
-# Nothing here is committed.
-*
-!.gitignore

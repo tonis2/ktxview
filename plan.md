@@ -20,12 +20,12 @@ The viewer opens any KTX2 the pipeline makes and shows:
 - **Repo:** `~/Documents/c3/ktxview`, a C3 executable `ktxview`. Local only;
   nothing is pushed without asking.
 - **Dependencies follow Rigsmith:**
-  - three.c3 as a git submodule at `libs/three`, with
-    `dependency-search-paths: ["libs-dev", "libs/three/lib", "libs"]`;
+  - each library its own git submodule in `libs/` (`cui.c3l`, `vulkan.c3l`,
+    `window.c3l`, `image.c3l`, `font.c3l`, `ktx.c3l`), with
+    `dependency-search-paths: ["libs"]`;
   - `dependencies: ["cui", "vk", "c3w", "image", "font", "ktx"]`;
-  - `libs-dev/` holds symlinks to the three.c3 working copies of the libraries,
-    so a library can change while the viewer builds against it. It is gitignored.
-  - The cui inside three.c3, not the stale standalone clone without `update_pixels`.
+  - cui from github.com/tonis2/cui, not the stale local clone without
+    `update_pixels`.
 - **UI:** cui's own `Renderer` in `ON_DEMAND` mode, so the app idles at about 0%
   CPU. ESC does not quit (Ctrl+Q or the window's close button do), because
   menus and dialogs use it.

@@ -1,4 +1,24 @@
-[submodule "libs/three"]
-	path = libs/three
-	url = https://github.com/tonis2/three.c3.git
+[submodule "libs/cui.c3l"]
+	path = libs/cui.c3l
+	url = https://github.com/tonis2/cui.git
+	branch = main
+[submodule "libs/vulkan.c3l"]
+	path = libs/vulkan.c3l
+	url = https://github.com/tonis2/Vulkan.c3.git
+	branch = main
+[submodule "libs/window.c3l"]
+	path = libs/window.c3l
+	url = https://github.com/tonis2/Window.c3.git
+	branch = main
+[submodule "libs/image.c3l"]
+	path = libs/image.c3l
+	url = https://github.com/tonis2/image.c3.git
+	branch = main
+[submodule "libs/font.c3l"]
+	path = libs/font.c3l
+	url = https://github.com/tonis2/font.c3.git
+	branch = main
+[submodule "libs/ktx.c3l"]
+	path = libs/ktx.c3l
+	url = https://github.com/tonis2/ktx.c3.git
 	branch = main
