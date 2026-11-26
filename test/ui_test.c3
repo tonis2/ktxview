@@ -216,6 +216,20 @@ fn void ctrl_o_opens_the_file_dialog()
 	test::eq(rig.app.tiled, false);
 }
 
+fn void file_open_from_the_menu_shows_the_dialog()
+{
+	fixtures::Rig rig;
+	rig.open("", {});
+	defer rig.free();
+
+	rig.click_text("File");
+	rig.click_text("Open…");
+	test::eq(rig.shell.dialog_open, true);
+	FileBrowser* browser = rig.ui.find_id("browser")!!.widget_as(FileBrowser);
+	test::eq(browser.mask.len, 1);
+	test::eq(browser.mask[0], "*.ktx2");
+}
+
 fn void the_toolbar_offers_only_what_the_file_has()
 {
 	char[] file = fixtures::plain(mem, vk::R8G8B8A8_UNORM, 8, 6, 1);

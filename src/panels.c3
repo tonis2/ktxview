@@ -187,7 +187,7 @@ fn Element* build_overview(Ui* ui) @private
 fn Element* build_file_browser(Ui* ui) @private
 {
 	Shell* shell = shell_of(ui);
-	String[] mask = shell.pick == OPEN ? OPEN_MASK[..] : COMPARE_MASK[..];
+	String[] mask = shell.pick == OPEN ? open_mask[..] : compare_mask[..];
 	return @subtree(ui)
 	{
 		@tree((Rectangle) { .size = { 640, 420 } })
@@ -200,8 +200,10 @@ fn Element* build_file_browser(Ui* ui) @private
 	};
 }
 
-const String[*] OPEN_MASK @private = { "*.ktx2" };
-const String[*] COMPARE_MASK @private = { "*.ktx2", "*.png" };
+// Globals, not consts: a const array is copied to the stack where it is sliced,
+// and the browser keeps the slice.
+String[*] open_mask @private = { "*.ktx2" };
+String[*] compare_mask @private = { "*.ktx2", "*.png" };
 
 // ---------------------------------------------------------------------------
 // Info panel

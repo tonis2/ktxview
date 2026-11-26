@@ -108,10 +108,10 @@ fn void Shell.init(&self, app::AppState* a)
 	self.areas.root.first.active = View.INFO.ordinal;
 	self.areas.root.second.active = View.IMAGE.ordinal;
 	self.menus = {
-		{ "File", FILE_ITEMS[..] },
+		{ "File", file_items[..] },
 		{ "Recent", {} },
-		{ "View", VIEW_ITEMS[..] },
-		{ "Image", IMAGE_ITEMS[..] },
+		{ "View", view_items[..] },
+		{ "Image", image_items[..] },
 	};
 	self.update_recent();
 }

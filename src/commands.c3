@@ -245,7 +245,9 @@ fn MenuItemFlags overview_state(Ui* ui) @private => { .checked = showing(ui, OVE
 fn MenuItemFlags compare_state(Ui* ui) @private => { .disabled = !shell_of(ui).app.has_doc };
 fn MenuItemFlags stop_state(Ui* ui) @private => { .disabled = !shell_of(ui).app.compare.loaded };
 
-const MenuItem[*] FILE_ITEMS @private = {
+// Globals, not consts: a const array is copied to the stack where it is sliced,
+// and the menus keep these slices.
+MenuItem[*] file_items @private = {
 	{ .label = "Open…", .shortcut = "Ctrl+O", .on_select = &cmd_open },
 	{ .label = "Compare with…", .shortcut = "Ctrl+D", .on_select = &cmd_compare, .state = &compare_state },
 	{ .label = "Stop comparing", .on_select = &cmd_stop_comparing, .state = &stop_state },
@@ -253,7 +255,7 @@ const MenuItem[*] FILE_ITEMS @private = {
 	{ .label = "Quit", .shortcut = "Ctrl+Q", .on_select = &cmd_quit },
 };
 
-const MenuItem[*] VIEW_ITEMS @private = {
+MenuItem[*] view_items @private = {
 	{ .label = "Image", .shortcut = "I", .on_select = &cmd_image_view },
 	{ .label = "Overview", .shortcut = "O", .on_select = &cmd_overview, .state = &overview_state },
 	{ .label = "Lit material", .shortcut = "M", .on_select = &cmd_lit, .state = &lit_state },
@@ -264,7 +266,7 @@ const MenuItem[*] VIEW_ITEMS @private = {
 	{ .label = "Actual size", .shortcut = "1", .on_select = &cmd_actual },
 };
 
-const MenuItem[*] IMAGE_ITEMS @private = {
+MenuItem[*] image_items @private = {
 	{ .label = "Next layer", .shortcut = "]", .on_select = fn (ui) => step_layer(ui, 1) },
 	{ .label = "Previous layer", .shortcut = "[", .on_select = fn (ui) => step_layer(ui, -1) },
 	{ .label = "Next face", .shortcut = "Shift+]", .on_select = fn (ui) => step_face(ui, 1) },
