@@ -200,6 +200,7 @@ fn int main(String[] args)
 	Options? parsed = parse_args(args);
 	if (catch parsed)
 	{
+		io::printfn("ktxview %s - a viewer for KTX2 textures\n", VERSION);
 		io::printn(USAGE);
 		return args.len > 1 && (args[1] == "-h" || args[1] == "--help") ? 0 : 1;
 	}

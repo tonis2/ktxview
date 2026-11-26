@@ -1,0 +1,34 @@
+# Checks every push and pull request. The tests are headless (cui::new_ui with no
+# window or GPU, fixtures made in memory), so a runner can run all of them.
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  C3C_VERSION: v0.8.6
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      # The submodules use HTTPS URLs to public repositories: no key needed.
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install c3c
+        run: |
+          set -euo pipefail
+          url="https://github.com/c3lang/c3c/releases/download/${C3C_VERSION}/c3-linux-static.tar.gz"
+          curl -fsSL -o c3c-dist "$url"
+          mkdir -p "$HOME/c3c"
+          tar -xzf c3c-dist -C "$HOME/c3c"
+          echo "$(dirname "$(find "$HOME/c3c" -type f -name c3c | head -1)")" >> "$GITHUB_PATH"
+
+      - run: c3c build
+
+      # Leak checks cost time locally (--test-noleak); CI always runs them.
+      - run: c3c test

@@ -10,6 +10,17 @@ Everything is decoded on the CPU to RGBA8 with `ktx.c3l` and drawn with `cui`,
 so what you see is what the file stores: sRGB colour looks right and data maps
 show their raw values.
 
+## Download
+
+The newest release, for each platform:
+
+- Linux: [ktxview-x86_64.AppImage](https://github.com/tonis2/ktxview/releases/download/latest/ktxview-x86_64.AppImage), then `chmod +x` and run it
+- Windows: [ktxview-windows-x64.zip](https://github.com/tonis2/ktxview/releases/download/latest/ktxview-windows-x64.zip), a portable folder; run `ktxview.exe`
+- macOS 26+ on Apple Silicon: [ktxview-macos-arm64.dmg](https://github.com/tonis2/ktxview/releases/download/latest/ktxview-macos-arm64.dmg). It is not notarized, so open it the first time with right-click › Open.
+
+Pushing a `v*` tag builds and publishes a release (`.github/workflows/release.yml`).
+`packaging/package-*.sh` make the same bundles locally, after `c3c build ktxview`.
+
 ## Build
 
 ```sh
