@@ -1,0 +1,6 @@
+build
+obj
+.claude
+*.o
+*.a
+*.so

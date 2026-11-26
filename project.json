@@ -1,0 +1,19 @@
+{
+	"langrev": "1",
+	"warnings": ["no-unused"],
+	"authors": [],
+	"version": "0.1.0",
+	"dependency-search-paths": ["libs-dev", "libs/three/lib", "libs"],
+	"dependencies": ["cui", "vk", "c3w", "image", "font", "ktx"],
+	"features": [],
+	"script-dir": "./",
+	"sources": ["src/**"],
+	"test-sources": ["test/**"],
+	"targets": {
+		"ktxview": {
+			"type": "executable",
+			"opt": "O1"
+		}
+	},
+	"output": "./build"
+}
